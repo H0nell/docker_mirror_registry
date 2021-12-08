@@ -1,0 +1,23 @@
+---
+dependencies:
+  - geerlingguy.docker
+
+galaxy_info:
+  author: H0nell
+  description: Docker mirror registry
+  min_ansible_version: 2.4
+  platforms:
+  - name: EL
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - system
+    - docker
+    - registry
+...
