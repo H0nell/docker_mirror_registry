@@ -1,0 +1,23 @@
+---
+- name: "{{ mir_registry_prefix }} Create directory to store images"
+  file:
+    state: directory
+    path: "{{ mir_registry_config_dir }}"
+    recurse: yes
+  
+- name: "{{ mir_registry_prefix }} Template registry config"
+  template:
+    src: "{{ mir_registry_template_src }}"
+    dest: "{{ mir_registry_template_dest }}"
+
+- name: "{{ mir_registry_prefix }} Start registry docker container"
+  docker_container:
+    name: "{{ mir_registry_ct_name }}"
+    image: "{{ mir_registry_docker_image }}:{{ mir_registry_docker_tag }}"
+    recreate: "{{ mir_registry_docker_recreate }}"
+    restart: "{{ mir_registry_docker_restart }}"
+    ports: "{{ mir_registry_bind_ip }}:{{ mir_registry_port  }}:{{ mir_registry_ct_port }}"
+    state: "{{ mir_registry_docker_state }}"
+    volumes: "{{ mir_registry_volumes }}"
+    restart_policy: "{{ mir_registry_docker_restart_policy }}"
+...

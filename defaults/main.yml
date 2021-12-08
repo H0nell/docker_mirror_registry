@@ -1,0 +1,23 @@
+---
+mir_registry_prefix: "=== MIRROR_REGISTRY ==="
+mir_registry_ct_name: "registry"
+mir_registry_docker_state: "started"
+mir_registry_docker_restart_policy: "always"
+mir_registry_docker_recreate: true
+mir_registry_docker_restart: true
+mir_registry_config_dir: "/opt/registry"
+mir_registry_template_src: "config.yml.j2"
+mir_registry_template_dest: "{{ mir_registry_config_dir }}/config.yml"
+mir_registry_port: "5000"
+mir_registry_ct_port: "5000"
+mir_registry_docker_image: "registry"
+mir_registry_config_mount:
+  - "{{ mir_registry_template_dest }}:/etc/docker/registry/config.yml"
+mir_registry_storage_mount:
+  - "{{ mir_registry_config_dir }}:/var/lib/registry"
+mir_registry_volumes: "{{ mir_registry_config_mount + mir_registry_storage_mount }}"
+#mir_registry_dockerhub_username: username
+#mir_registry_dockerhub_password: password
+mir_registry_docker_tag: "latest"
+mir_registry_bind_ip: 0.0.0.0
+...

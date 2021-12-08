@@ -1,0 +1,24 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/registry
+http:
+  addr: :{{ mir_registry_ct_port }}
+  headers:
+    X-Content-Type-Options: [nosniff]
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+{ % if mir_registry_dockerhub_username is defined % }
+proxy:
+  remoteurl: https://registry-1.docker.io
+  username: {{ mir_registry_dockerhub_username }}
+  password: {{ mir_registry_dockerhub_password }}
+{ % endif % }
