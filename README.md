@@ -23,7 +23,7 @@ Including an example of how to use your role (for instance, with variables passe
       become: yes
       become_user: root
       roles:
-        - role: mirror_registry
+        - role: docker_mirror_registry
           mir_registry_docker_tag: "2"
           mir_registry_dockerhub_username: example.username
           mir_registry_dockerhub_password: example.password
