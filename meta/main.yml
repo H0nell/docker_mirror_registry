@@ -3,7 +3,7 @@ dependencies:
   - geerlingguy.docker
 
 galaxy_info:
-  author: H0nell
+  author: Maksim Makhalov
   description: Docker mirror registry
   min_ansible_version: 2.4
   platforms:
